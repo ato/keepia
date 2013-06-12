@@ -12,4 +12,4 @@ You will need [Leiningen][1] 1.7.0 or above installed.
 
 ## License
 
-Copyright © 2013 FIXME
+Copyright © 2013 Alex Osborne. Distributed under the 2-clause BSD license.
