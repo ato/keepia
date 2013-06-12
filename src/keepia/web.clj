@@ -1,14 +1,11 @@
 (ns keepia.web
   "Web interface"
   (:use compojure.core
-        [keepia.handler :only [app-handler]]
-        [keepia.handlebars :only [handlebars wrap-handlebars]]
+        [keepia.web.handlebars :only [handlebars wrap-handlebars]]
         [ring.adapter.jetty :only [run-jetty]]
         [clj-webjars :only [wrap-webjars]]
         [ring.middleware.stacktrace :only [wrap-stacktrace]])
-  (:require [compojure.handler :as handler]
-            [compojure.route :as route]
-            keepia.web.storage)
+  (:require keepia.web.storage)
   (:import org.eclipse.jetty.server.Server
            com.github.jknack.handlebars.Handlebars))
 

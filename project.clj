@@ -1,6 +1,7 @@
 (defproject keepia "0.1.0-SNAPSHOT"
   :description "digital library prototype"
   :url "http://github.com/ato/keepia"
+  :main keepia.cli
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [compojure "1.1.5"]
                  [clj-webjars "0.9.0"]
@@ -10,7 +11,8 @@
                  [ring/ring-jetty-adapter "1.1.8"]
                  [ring/ring-devel "1.1.0"]
                  [clj-stacktrace "0.2.5"]
-                 [clj-time "0.5.1"]]
+                 [clj-time "0.5.1"]
+                 [reply "0.2.0"]]
   :profiles
   {:dev {:source-paths ["dev"]
          :dependencies [[ring-mock "0.1.5"]

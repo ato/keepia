@@ -1,4 +1,5 @@
-(ns keepia.handlebars
+(ns keepia.web.handlebars
+  "Handlebars templating subsystem"
   (:import (com.github.jknack.handlebars Handlebars ValueResolver Context)
            (com.github.jknack.handlebars.context MapValueResolver 
                                                  JavaBeanValueResolver

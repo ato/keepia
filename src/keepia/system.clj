@@ -15,9 +15,9 @@
     (close registry)
     (close storage)))
 
-(defn system []  
+(defn system [options]
   (let [keepia  (Keepia. 
                   (open-storage "/tmp/a")
                   (open-registry "/tmp/a")
                   nil)]
-    (assoc keepia :webserver (open-webserver keepia {}))))
+    (assoc keepia :webserver (open-webserver keepia (:web options)))))
