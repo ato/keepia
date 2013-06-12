@@ -1,4 +1,5 @@
-(ns keptium.io
+(ns keepia.io
+  "I/O utilities"
   (:import (java.nio.file Path Paths)))
 
 (defn ^Path to-path [path]

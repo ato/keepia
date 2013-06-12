@@ -1,4 +1,4 @@
-(ns keptium.handlebars
+(ns keepia.handlebars
   (:import (com.github.jknack.handlebars Handlebars ValueResolver Context)
            (com.github.jknack.handlebars.context MapValueResolver 
                                                  JavaBeanValueResolver

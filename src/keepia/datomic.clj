@@ -1,4 +1,4 @@
-(ns keptium.datomic
+(ns keepia.datomic
   (:use [datomic.api :only [q db] :as d]))
 
 (def uri "datomic:mem://seattle")

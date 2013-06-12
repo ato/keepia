@@ -1,11 +1,12 @@
-(ns keptium.system
-  (:require keptium.handler)
-  (:use (keptium webserver registry storage)))
+(ns keepia.system
+  "The keepia digital library system"
+  (:require keepia.handler)
+  (:use (keepia web registry storage)))
 
 (defn- close [^java.io.Closeable closeable]
   (.close closeable))
 
-(defrecord Keptium [storage
+(defrecord Keepia [storage
                     registry
                     webserver]
   java.io.Closeable
@@ -15,8 +16,8 @@
     (close storage)))
 
 (defn system []  
-  (let [keptium  (Keptium. 
+  (let [keepia  (Keepia. 
                   (open-storage "/tmp/a")
                   (open-registry "/tmp/a")
                   nil)]
-    (assoc keptium :webserver (open-webserver keptium {}))))
+    (assoc keepia :webserver (open-webserver keepia {}))))

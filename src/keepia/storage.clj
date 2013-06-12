@@ -1,8 +1,17 @@
-(ns keptium.storage
+(ns keepia.storage
+  "Object storage subsystem
+
+   Stores and retrieves fixed length streams of bytes called blobs.
+
+   Blobs may have arbitrary metadata associated with them. The storage
+   subsystem itself will add some metadata entries:
+
+       :size        number of bytes in the body of the blob
+       :timestamp   time the blob was written"
   (:require [clojure.java.io :as io]
             [clojure.edn :as edn]
             clj-time.coerce)
-  (:use keptium.io)
+  (:use keepia.io)
   (:import (java.nio.file Path Paths Files StandardOpenOption LinkOption)
            (java.nio.channels Channels WritableByteChannel)
            (java.io PushbackReader)))
@@ -92,6 +101,3 @@
 
 (defn open-storage [basedir]
   (NaiveStorage. (to-path basedir) (atom 0)))
-
-;; (meta (get (open-storage "/tmp") "1"))
-

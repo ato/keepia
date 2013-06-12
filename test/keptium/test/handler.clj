@@ -1,7 +1,7 @@
-(ns keptium.test.handler
+(ns keepia.test.handler
   (:use clojure.test
         ring.mock.request  
-        keptium.handler))
+        keepia.handler))
 
 (deftest test-app
   (testing "main route"

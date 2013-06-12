@@ -1,6 +1,9 @@
-(ns keptium.registry
+(ns keepia.registry
+  "Object registry subsystem
+
+   Maintains a mapping between object ids and storage ids."
   (:require [clojure.edn :as edn]
-            [keptium.io :refer :all]))
+            [keepia.io :refer :all]))
 
 (defrecord RegistryTx [declare retract])
 
