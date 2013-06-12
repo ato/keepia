@@ -11,7 +11,6 @@
   (:require [clojure.java.io :as io]
             [clojure.edn :as edn]
             clj-time.coerce)
-  (:use keepia.io)
   (:import (java.nio.file Path Paths Files StandardOpenOption LinkOption)
            (java.nio.channels Channels WritableByteChannel)
            (java.io PushbackReader)))
@@ -98,6 +97,9 @@
     (begin [this] (NaiveTransaction. this))
   IdGenerator
     (genid [this] (str (swap! last-id inc))))
+
+(defn- ^Path to-path [path]
+  (Paths/get (str path) (make-array String 0)))
 
 (defn open-storage [basedir]
   (NaiveStorage. (to-path basedir) (atom 0)))
