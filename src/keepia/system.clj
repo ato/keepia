@@ -1,6 +1,5 @@
 (ns keepia.system
   "The keepia digital library system"
-  (:require keepia.handler)
   (:use (keepia web registry storage)))
 
 (defn- close [^java.io.Closeable closeable]
@@ -14,6 +13,11 @@
     (close webserver)
     (close registry)
     (close storage)))
+
+(defn cli-system [options]
+  (Keepia. (open-storage "/tmp/a")
+           (open-registry "/tmp/a")
+           nil))
 
 (defn system [options]
   (let [keepia  (Keepia. 

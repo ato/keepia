@@ -22,7 +22,7 @@
        :body    (io/input-stream blob)}
       {:status 404
        :header {"Content-Type" "text/plain"}
-       :body (str "Blob " id " not found\n")o})))
+       :body (str "Blob " id " not found\n")})))
 
 (defn subroutes [keepia]
   (let [storage (:storage keepia)]

@@ -46,9 +46,13 @@
 
 (extend-protocol ChannelOutput
   String
-  (write-to-channel [s ^WritableByteChannel channel]
-    (with-open [writer (Channels/newWriter channel "UTF-8")]
-      (.write writer s))))
+    (write-to-channel [s ^WritableByteChannel channel]
+      (with-open [writer (Channels/newWriter channel "UTF-8")]
+        (.write writer s)))
+  Path
+    (write-to-channel [this ^WritableByteChannel out]
+      (with-open [in (Files/newByteChannel this read-only)]
+        (.transferTo in 0 Long/MAX_VALUE out))))
 
 (defn- put-file [^Path basedir id contents]
   (let [path (.resolve basedir id)]
@@ -96,10 +100,14 @@
   Transactional
     (begin [this] (NaiveTransaction. this))
   IdGenerator
-    (genid [this] (str (swap! last-id inc))))
+    (genid [this] (str (swap! last-id inc)))
+  Putbox
+    (put [this output metadata]
+      (put (begin this) output metadata)))
 
 (defn- ^Path to-path [path]
   (Paths/get (str path) (make-array String 0)))
 
 (defn open-storage [basedir]
   (NaiveStorage. (to-path basedir) (atom 0)))
+

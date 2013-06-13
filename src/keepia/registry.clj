@@ -2,8 +2,7 @@
   "Object registry subsystem
 
    Maintains a mapping between object ids and storage ids."
-  (:require [clojure.edn :as edn]
-            [keepia.io :refer :all]))
+  (:require [clojure.edn :as edn]))
 
 (defrecord RegistryTx [declare retract])
 
